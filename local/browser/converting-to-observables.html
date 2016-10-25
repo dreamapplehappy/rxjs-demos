@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<!--  Converting to observables -->
+
+<!-- HTML -->
+<button id="btn">click me</button>
+
+<!-- JavaScript -->
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+
+<script>
+    // use ES6
+    // Step 1 => Converting to observables
+    // open the browser console to see the result
+
+    // @1 From one or multiple values (将一个值或者多个值转换为Observable对象)
+    let value = Rx.Observable.of(1, 2, 'demo');
+    value.subscribe(v => console.log(v));
+
+    // @2 From array of values (将一个数组转换为Observable对象)
+    let array = Rx.Observable.from([1, 2, 3]);
+    array.subscribe(v => console.log(v));
+
+    // @3 From an event (将一个事件转换为Observable对象)
+    const btn = document.querySelector('#btn');
+    let event = Rx.Observable.fromEvent(btn, 'click');
+    event.subscribe(() => {
+        alert('You clicked the button.');
+    })
+
+    // @4 From a Promise (将一个Promise转换为Observable对象)
+    let github = Rx.Observable.fromPromise(fetch('https://api.github.com/users/thejameskyle/followers'));
+    github.subscribe(res => {
+        console.log(res);
+    })
+
+    // below need a node.js env so I noted them
+    // @5 From a callback (last argument is a callback)
+    let func1 = function(arg1, cb) {
+        cb(arg1);
+    }
+    let func1Observable = Rx.Observable.bindCallback(func1);
+    func1Observable(100).subscribe( value => {
+        console.log(value); // 100
+    })
+
+    // @6 From a callback (last argument is a callback)
+    let func2 = function(arg1, arg2, cb) {
+        cb(arg1, arg2);
+    }
+    let func2Observable = Rx.Observable.bindCallback(func2);
+    func2Observable(100,200).subscribe( (values) => {
+        console.log(values); // [100, 200]
+    })
+</script>
+</body>
+</html>
