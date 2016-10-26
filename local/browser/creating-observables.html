@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- JavaScript -->
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+
+<script>
+    // create a Observable use new Rx.Subject()
+    // 使用 new Rx.Subject() 创建的对象即是Observable(可观察的对象)的也是一个observer(观察者)
+    let observable = new Rx.Subject();
+    observable.subscribe(value => {
+        console.log(value);
+    });
+    observable.next('hello, world');
+    observable.next(1);
+
+    console.log('------');
+    // create a Observble
+    // Internally produce new events.
+    let observable2 = Rx.Observable.create(observer => {
+                observer.next(2);
+    setTimeout(() => {
+        observer.next(3);
+    }, 1000);
+    })
+    observable2.subscribe(value => {
+        console.log(value);
+    })
+</script>
+</body>
+</html>
