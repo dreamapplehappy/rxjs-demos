@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- 在控制台看输出结果 -->
+
+<input id="input" type="text">
+<span id="text"></span>
+<button id="stop">stop</button>
+
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+
+<script>
+    let inputEle = document.querySelector('#input');
+    let show = document.querySelector('#text');
+    let input = Rx.Observable.fromEvent(inputEle, 'keyup');
+    let btn = document.querySelector('#stop');
+
+    let showInfo = function(value) {
+        show.innerHTML = value;
+    }
+
+    // @1 simple subscribe
+    //input.subscribe(e => {
+    //	showInfo(e.target.value);
+    //});
+
+    // @2 use filter
+    //input.filter(e => e.target.value.length > 2)
+    //     .subscribe(e => showInfo(e.target.value));
+
+    // @3 use delay
+    //input.delay(1000)
+    //     .subscribe(e => showInfo(e.target.value));
+
+    // @4 use take, stop the stream of events after 3 events
+    //input.take(3)
+    //     .subscribe(e => showInfo(e.target.value));
+
+    // @5 use debounceTime
+    //input.debounceTime(1000)
+    //     .subscribe((e) => showInfo(e.target.value));
+
+    // @6 use throttleTime
+    //input.throttleTime(600)
+    //     .subscribe((e) => showInfo(e.target.value));
+
+    // @7 use takeUntil
+    let stopStream = Rx.Observable.fromEvent(btn, 'click');
+    input.takeUntil(stopStream)
+            .subscribe((e) => showInfo(e.target.value));
+</script>
+</body>
+</html>

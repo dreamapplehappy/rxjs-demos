@@ -6,3 +6,6 @@
 + [x] **Creating observables** 创造`Observable`对象   
     - [JSFiddle](https://jsfiddle.net/dreamapple/e3bq06d6/)
     - [Local](local/browser/creating-observables.html)
++ [x]  **Controlling the flow** 控制流
+    - [JSFiddle](https://jsfiddle.net/dreamapple/66n6wkts/)
+    - [Local](local/browser/controlling-the-flow.html)
