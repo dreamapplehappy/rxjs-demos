@@ -12,3 +12,6 @@
 + [x] **Producing values** 生产值
     - [JSFiddle](https://jsfiddle.net/dreamapple/9vvLu7de/)
     - [Local](local/browser/producing-values.html)
++ [x] **A small application** 一个小程序
+    - [JSFiddle](https://jsfiddle.net/dreamapple/4esdz8r4/)
+    - [Local](local/browser/a-small-application.html)

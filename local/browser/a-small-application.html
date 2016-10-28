@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="app">
+    <button id="minus">-</button>
+    <span id="result">0</span>
+    <button id="plus">+</button>
+</div>
+
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+<script>
+    let minusEle = document.querySelector('#minus');
+    let plusEle = document.querySelector('#plus');
+    let resultEle = document.querySelector('#result');
+
+    let showResult = function(value) {
+        resultEle.innerHTML = value;
+    };
+
+    let minus = Rx.Observable.fromEvent(minusEle, 'click')
+            .map(() => state => Object.assign({}, state, {count: state.count - 1}));
+    let plus = Rx.Observable.fromEvent(plusEle, 'click')
+            .map(() => state => Object.assign({}, state, {count: state.count + 1}));
+
+    let state = Rx.Observable.merge(minus, plus)
+            .scan((state, func) => func(state), {count: 0});
+
+    state.subscribe((state) => showResult(state.count));
+
+</script>
+</body>
+</html>
