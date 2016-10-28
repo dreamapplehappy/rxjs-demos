@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- 在控制台看输出结果 -->
+
+<!-- 在控制台看输出结果 -->
+
+<input id="input" type="text">
+<span id="text"></span>
+
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+<script>
+    let inputEle = document.querySelector('#input');
+    let show = document.querySelector('#text');
+    let input = Rx.Observable.fromEvent(inputEle, 'keyup');
+
+    let showInfo = function(value) {
+        show.innerHTML = value;
+    }
+
+    // @1 use map
+    //input.map(e => e.target.value)
+    //     .subscribe(v => showInfo(v));
+
+    // @2 use pluck
+    //input.pluck('target', 'value')
+    //     .subscribe(v => showInfo(v));
+
+    // @3 use pluck with pairwise
+    //input.pluck('target', 'value').pairwise()
+    //     .subscribe(v => showInfo(v));
+
+    // @4 use pluck with distinct
+    //input.pluck('target', 'value').distinct()
+    //     .subscribe(v => showInfo(v));
+
+    // @5 use pluck with distinctUntilChanged
+    input.pluck('target', 'value').distinctUntilChanged()
+            .subscribe(v => showInfo(v));
+
+
+</script>
+
+<script>
+
+</script>
+</body>
+</html>

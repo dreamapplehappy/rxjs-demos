@@ -9,3 +9,6 @@
 + [x]  **Controlling the flow** 控制流
     - [JSFiddle](https://jsfiddle.net/dreamapple/66n6wkts/)
     - [Local](local/browser/controlling-the-flow.html)
++ [x] **Producing values** 生产值
+    - [JSFiddle](https://jsfiddle.net/dreamapple/9vvLu7de/)
+    - [Local](local/browser/producing-values.html)
