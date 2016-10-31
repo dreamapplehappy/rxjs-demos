@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+<script>
+
+    /* bindCallBack */
+
+    // 一个函数
+    function func (msg, func) {
+        func(msg);
+    }
+
+    // 没有使用bindCallBack
+    func('hello', (msg) => console.log(msg, 'from a normal function.'));
+
+    // 使用bindCallBack
+    let test = Rx.Observable.bindCallback(func);
+    test('hello').subscribe((msg) => {
+        console.log(msg, 'from a subscribe.');
+    });
+
+</script>
+</body>
+</html>

@@ -20,6 +20,31 @@
 
 ### 操作符的使用
 
-+ [x] **`.startWith`**
++ [x] **`startWith`**
+    - [JSFiddle](https://jsfiddle.net/dreamapple/rwh5f3t2/)
+    - [Local](local/browser/operator/startWith.html)
++ [x] **`bindCallback`**    
+    - [JSFiddle](https://jsfiddle.net/dreamapple/tna479e2/)
+    - [Local](local/browser/operator/bindCallback.html)
++ [x] **`bindNodeCallback`**    
+    - [Local](local/node/operator/bindNodeCallback.js) 
++ [x] **`combineLatest`**    
+    - [JSFiddle](https://jsfiddle.net/dreamapple/5qus3f2c/)
+    - [Local](local/browser/operator/combineLatest.html) 
++ [x] ** **    
     - [JSFiddle]()
-    - [Local]()
+    - [Local](local/browser/operator/) 
++ [x] ** **    
+    - [JSFiddle]()
+    - [Local](local/browser/operator/) 
++ [x] ** **    
+    - [JSFiddle]()
+    - [Local](local/browser/operator/) 
++ [x] ** **    
+    - [JSFiddle]()
+    - [Local](local/browser/operator/) 
+                            
+    
++ [x] ** **    
+    - [JSFiddle]()
+    - [Local](local/browser/operator/)    

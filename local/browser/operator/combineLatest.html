@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+<script>
+
+    // 第一个stream 或者说observable
+    let stream1 = Rx.Observable.create((observer) => {
+                let a = 0;
+                setInterval(() => {
+                    a = a + 3;
+                    observer.next(a);
+                }, 2000);
+            });
+
+    // 第二个stream
+    let stream2 = Rx.Observable.create((observer) => {
+                let b = 10;
+                setInterval(() => {
+                    b = b + 10;
+                    observer.next(b);
+                }, 1000);
+            });
+
+    let newStream = Rx.Observable.combineLatest(stream1, stream2, (a, b) => {
+                console.log('a -> ' + a, 'b -> ' + b);
+                return a + b;
+            });
+
+    newStream.subscribe((r) => console.log(r));
+</script>
+</body>
+</html>
