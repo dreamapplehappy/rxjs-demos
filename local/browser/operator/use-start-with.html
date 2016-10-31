@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="app">
+    <button id="test">test</button>
+</div>
+
+<script src="https://cdn.bootcss.com/rxjs/5.0.0-rc.1/Rx.min.js"></script>
+
+<script>
+    let testEle = document.querySelector('#test');
+    let test = Rx.Observable.fromEvent(testEle, 'click');
+    test.startWith('startup click')
+            .subscribe((e) => {
+                    console.log(e)
+            });
+</script>
+</body>
+</html>
