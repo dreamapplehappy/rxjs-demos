@@ -20,6 +20,6 @@
 
 ### 操作符的使用
 
-+ [x] **Use `.startWith`** 使用`startWith`
++ [x] **`.startWith`**
     - [JSFiddle]()
     - [Local]()
